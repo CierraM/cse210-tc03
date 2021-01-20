@@ -1,1 +1,2 @@
-# cse210-tc03
+Jacob Elzinga
+I am Jacob Elzinga, im currently a softmore at BYUI and im working on becoming a software engineer. I have 3 brthers and 2 sisters with me being the second youngest and me and most of my family live in Oregon. Also some hobbies of mine include cooking, singing, sculpting, and video games. Last but not least something intresting about myself is that I am an identical twin. 
