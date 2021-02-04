@@ -10,9 +10,11 @@ class Director:
 
      def start_game():
 
+
      def get_inputs():   
 
      def do_updates():
+
 
      def do_outputs():
 
