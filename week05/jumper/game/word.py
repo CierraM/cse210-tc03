@@ -19,7 +19,7 @@ class Word:
         self.puzzle_word = ""
         self.hidden_puzzle = []
         self.correct_guess = False
-        self.game_completed = False
+        self.get_puzzle()
 
     def get_puzzle(self):
         """
@@ -53,8 +53,6 @@ class Word:
             if self.puzzle_word[letter] == guess:
                 self.hidden_puzzle[letter] = guess #CHECK THIS TO MAKE SURE THE CORRECT AREA IS REPLACED ******************
                 self.correct_guess = True
-            else:
-                pass
         
         return self.correct_guess
     
@@ -65,11 +63,9 @@ class Word:
         """
         for character in range(len(self.hidden_puzzle)):
             if self.hidden_puzzle[character] != "_": #CHECK THIS TO MAKE SURE IT WORKS AS IT OUGHT TO FOR A VICTORY***************
-                self.game_completed = True
-            else:
-                self.game_completed = False
+                return False
 
-        return self.game_completed
+        return True
 
 
     
