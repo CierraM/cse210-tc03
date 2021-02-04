@@ -61,11 +61,13 @@ class Word:
         This will check the hidden puzzle to see if there are any blank spaces left.
         If not, the game is completed and the return is True. Otherwise, the return is False.
         """
-        for character in range(len(self.hidden_puzzle)):
-            if self.hidden_puzzle[character] != "_": #CHECK THIS TO MAKE SURE IT WORKS AS IT OUGHT TO FOR A VICTORY***************
-                return False
-
-        return True
+        # for character in range(len(self.hidden_puzzle)):
+        #     if self.hidden_puzzle[character] != "_": #CHECK THIS TO MAKE SURE IT WORKS AS IT OUGHT TO FOR A VICTORY***************
+        #         return False
+        if "_" in self.hidden_puzzle:
+            return False
+        else:
+            return True
 
 
     

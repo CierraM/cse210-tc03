@@ -26,6 +26,7 @@ class Director:
             self.do_updates(self.get_inputs())
             if self.jumper.is_dead():
                 self.console.write("You are DEAD!")
+                self.console.write(f'The word was {self.word.puzzle_word}.')
                 self.keep_playing = False
             if self.word.check_finish():
                 self.console.write("You are a Winner")
