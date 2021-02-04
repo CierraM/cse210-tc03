@@ -1,6 +1,6 @@
-from Console import Console
-from Jumper import Jumper
-from Word import Word
+from game.console import Console
+from game.jumper import Jumper
+from game.word import Word
 
 class Director:
     """
