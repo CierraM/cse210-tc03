@@ -6,16 +6,15 @@ class Director:
     """
         
     """
-    def __init__(self):
+     def __init__(self):
 
-    def start_game():
+     def start_game():
 
-    def get_inputs():
-        
+     def get_inputs():   
 
-    def do_updates():
+     def do_updates():
 
-    def do_outputs():
+     def do_outputs():
 
     
 

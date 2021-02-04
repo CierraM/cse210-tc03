@@ -13,18 +13,21 @@ running the following command.
 python3 jumper 
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE 
-and open the project folder. Select the main module inside the hunter folder and 
+and open the project folder. Select the main module inside the jumper folder and 
 click the "run" icon.
 
 ## Project Structure
 ---
 The project files and folders are organized as follows:
 ```
-root                    (project root folder)
-+-- hunter              (source code for game)
-  +-- game              (specific game classes)
-  +-- __init__.py       (python package file)
-  +-- __main__.py       (entry point for program)
+cse210-tc03                 (repository)
+  +-- week05                (project root folder)
+    +-- jumper              (source code for game)
+      +-- game              (holds files for game)
+        +-- console.py      (letter input, text output)
+        +-- director.py     ("brain" of the program)
+        +-- jumper.py       (parachute display)
+        +-- word.py         (keeps track of info related to random word)
 +-- README.md           (general info)
 ```
 
@@ -34,4 +37,7 @@ root                    (project root folder)
 
 ## Authors
 ---
-* TODO: Add your names and emails here
+Benjamin Fernelius - fer19038@byui.edu
+Cierra Morris - how17018@byui.edu
+Jacob Elzinga - elz20002@byui.edu
+Jane Orr - orr19002@byui.edu
