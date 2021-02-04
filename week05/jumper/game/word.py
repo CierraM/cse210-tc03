@@ -9,8 +9,13 @@ class Word:
         Creating variables for this class to share. Mainly inporting the word base list and
         setting true or false values for a correct guess.
         """
+        self.file = open('word_bank.txt', 'r')
+        self.word_list = self.file.read()
+        self.word_bank = self.word_list.splitlines()
+        self.word_bank_len = len(self.word_bank) - 1
 
-        self.list = ["Python", "Java", "Programming"] #THIS NEEDS TO BE REPLACED WITH A FULL FILE OF WORDS **********
+        # self.list = ["Python", "Java", "Programming"] #This was for initial testing. No longer needed
+
         self.puzzle_word = ""
         self.hidden_puzzle = []
         self.correct_guess = False
@@ -22,7 +27,7 @@ class Word:
         ***Should only be run once or else the word will change***
         """
         i = 0
-        self.puzzle_word = self.list[random.randint(0, 2)]
+        self.puzzle_word = self.word_bank[random.randint(0, self.word_bank_len)]
         while i != len(self.puzzle_word):
             self.hidden_puzzle.append("_") #CHECK THIS TO MAKE SURE IT APPENDS CORRECTLY *******************
             i += 1
