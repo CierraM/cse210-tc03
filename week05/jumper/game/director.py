@@ -38,6 +38,7 @@ class Director:
             self (Director): an instance of Director.
         """
     def get_inputs(self):
+        self.console.write("")
         letter = self.console.read_letter("Guess a letter [a-z]:")
         return letter
         """Gets the inputs at the beginning of each round of play. Gets the letter from the user.
@@ -47,6 +48,7 @@ class Director:
         """
     def do_updates(self,letter):
         if not self.word.guess(letter):
+            self.console.write(f'{letter} is not in the word')
             self.jumper.cut_line()
         """Updates the important game information for each round of play. Which would include if not the chosen letter cutting the parachute.
 
