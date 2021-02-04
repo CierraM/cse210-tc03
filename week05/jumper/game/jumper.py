@@ -31,7 +31,7 @@ class Jumper:
         Also changes the guy's head to an 'x' if he is dead.
         """
         if len(self.parachute) <= 5:
-            self.parachute.remove(0)
+            self.parachute.pop(0)
             self.parachute.insert(0, "   x")
             return True
         else:
