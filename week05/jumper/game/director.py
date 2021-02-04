@@ -12,7 +12,6 @@ class Director:
 
     def get_inputs():
         
-
     def do_updates():
 
     def do_outputs():
