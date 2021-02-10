@@ -16,6 +16,9 @@ class Roster:
         """
         self.current = -1
         self.players = []
+
+    def get_players(self):
+        return len(self.players)
         
     def add_player(self, player):
         """Adds the given player to the roster
@@ -45,8 +48,3 @@ class Roster:
             self (Roster): An instance of Roster.
         """
         self.current = (self.current + 1) % len(self.players)
-    
-    def get_player_list(self):
-        """returns the list of player objects
-        """
-        return self.players

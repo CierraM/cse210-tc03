@@ -25,7 +25,6 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
-        self._num_of_players = 0
         self._board = Board()
         self._console = Console()
         self._keep_playing = True
@@ -39,6 +38,7 @@ class Director:
             self (Director): an instance of Director.
         """
         self._prepare_game()
+        #self._board.set_num_players(self.num_players)
         while self._keep_playing:
             self._get_inputs()
             self._do_updates()
@@ -50,13 +50,13 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        self._num_of_players = self._console.read_number('How many players are there?')
-        for n in range(self._num_of_players):
+        self.num_players = int(self._console.read(f"Enter number of players (1 or more): "))
+        for n in range(self.num_players):
             name = self._console.read(f"Enter a name for player {n + 1}: ")
-            number = self._board.generate_number()
-            player = Player(name, number)
+            player = Player(name, n)
             self._roster.add_player(player)
-    
+        self._board.add_roster(self._roster)
+
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
         that means getting the move from the current player.
@@ -64,17 +64,15 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        #display the board
-        players = self._roster.get_players()
-        board = self._board.get_board(players)
+        # display the game board
+        board = self._board.to_string()
         self._console.write(board)
-
+        # get next player's move
         player = self._roster.get_current()
         self._console.write(f"{player.get_name()}'s turn:")
         guess = self._console.read_number("What is your guess?")
         move = Move(guess)
-        player.set_move(move)
-
+        player.set_guess(move)
 
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -84,8 +82,8 @@ class Director:
             self (Director): An instance of Director.
         """
         player = self._roster.get_current()
-        move = player.get_move()
-        self._board.apply(move)
+        move = player.get_guess()
+        self._keep_playing = not self._board.apply(player, move)
  
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
@@ -94,15 +92,12 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if self._board.winner():
-            winner = self.roster.get_current()
+        if not self._keep_playing:
+            winner = self._roster.get_current()
             name = winner.get_name()
             print(f"\n{name} won!")
-            self._keep_playing = False
+        self._roster.next_player()
 
-        players = self.roster.get_players()
-        self._console_write(self._board.get_board(players))
-        self.roster.next_player()
 
 
      
