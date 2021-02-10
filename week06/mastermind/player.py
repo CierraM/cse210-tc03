@@ -10,7 +10,6 @@ class Player:
     """
     def __init__(self, name, index):
         """The class constructor.
-        
         Args:
             self (Player): an instance of Player.
         """
@@ -18,11 +17,8 @@ class Player:
         self._move = None
         self._index = index
 
-    
-
     def get_index(self):
         """ Get player index
-
         Args:
             self (Player): an instance of Player.
         """
@@ -31,7 +27,6 @@ class Player:
     def get_guess(self):
         """Returns the player's last move (an instance of Move). If the player 
         hasn't moved yet this method returns None.
-
         Args:
             self (Player): an instance of Player.
         """
@@ -39,7 +34,6 @@ class Player:
 
     def get_name(self):
         """Returns the player's name.
-
         Args:
             self (Player): an instance of Player.
         """
@@ -47,7 +41,6 @@ class Player:
 
     def set_guess(self, guess):
         """Sets the player's last guess to the given instance of guess.
-
         Args:
             self (Player): an instance of Player.
             self (guess): an instance of guess
