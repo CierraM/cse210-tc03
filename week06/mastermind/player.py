@@ -1,25 +1,55 @@
-class Move:
-    """A maneuver in the game. The responsibility of Move is to keep track of the stones to remove and which pile to remove them from.
+class Player:
+    """A person taking part in a game. The responsibility of Player is to keep track of their identity and last move.
     
     Stereotype: 
         Information Holder
 
     Attributes:
-        _guess (integer): The player's guess.
-
+        _name (string): The player's name.
+        _move (Move): The player's last move.
     """
-    def __init__(self, guess):
+    def __init__(self, name, index):
         """The class constructor.
         
         Args:
-            self (Board): an instance of Board.
+            self (Player): an instance of Player.
         """
-        self.guess = guess
+        self._name = name
+        self._move = None
+        self._index = index
 
-    def get_guess(self):
-        """Returns The player's guess.
+    
+
+    def get_index(self):
+        """ Get player index
 
         Args:
-            self (Move): an instance of Move.
+            self (Player): an instance of Player.
         """
-        return self.guess
+        return self._index
+        
+    def get_guess(self):
+        """Returns the player's last move (an instance of Move). If the player 
+        hasn't moved yet this method returns None.
+
+        Args:
+            self (Player): an instance of Player.
+        """
+        return self._move
+
+    def get_name(self):
+        """Returns the player's name.
+
+        Args:
+            self (Player): an instance of Player.
+        """
+        return self._name
+
+    def set_guess(self, guess):
+        """Sets the player's last guess to the given instance of guess.
+
+        Args:
+            self (Player): an instance of Player.
+            self (guess): an instance of guess
+        """
+        self._guess = guess
