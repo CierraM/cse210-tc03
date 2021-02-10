@@ -1,5 +1,4 @@
 import random
-import random
 
 class Board:
     """A designated playing surface. The responsibility of Board is to keep track of the pieces in play.
