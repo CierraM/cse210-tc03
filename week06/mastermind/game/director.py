@@ -70,7 +70,7 @@ class Director:
         # get next player's move
         player = self._roster.get_current()
         self._console.write(f"{player.get_name()}'s turn:")
-        guess = self._console.read_number("What is your guess?")
+        guess = self._console.read_number("What is your guess? ")
         move = Move(guess)
         player.set_guess(move)
 
@@ -98,6 +98,7 @@ class Director:
             print(f"\n{name} won!")
         self._roster.next_player()
 
+     
 
 
      
