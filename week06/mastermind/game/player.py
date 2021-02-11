@@ -52,4 +52,4 @@ class Player:
             self (Player): an instance of Player.
             self (guess): an instance of guess
         """
-        self._guess = guess
+        self._move = guess
