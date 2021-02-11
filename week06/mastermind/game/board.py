@@ -22,11 +22,19 @@ class Board:
         
 
     def add_roster(self, roster):
+        """Adds a roster, updates the number of characters, and calls the prepare method
+            Args: roster: an instance of the roster class
+        """
         self._roster = roster
         self.num_players = roster.get_players()
         self._prepare()
 
-    def generate_hint(self, code, guess):
+    def _generate_hint(self, code, guess):
+        """
+        Generates the hint to tell the player how close their guess was
+        args: code: list, the actual number the player is trying to guess
+              guess: list, the player's guess
+        """        
         s_code = str(code)
         hint = ''
         s_guess = str(guess)
@@ -40,6 +48,9 @@ class Board:
         return hint
 
     def is_winner(self):
+        """
+        returns true if someone has won, false if not
+        """
         return self.winner
 
     def apply(self, player, move):
@@ -52,14 +63,9 @@ class Board:
         """
         guess = move.get_guess()
 
-        #calculate the new hint from the guess
-        # self._codes = [] random genreated code
-        # self._hints = [] Special charecters
-        # self._guess = [] last guess
-        # self._guess = guess
         code = self._codes[player.get_index()]
         self._guess[player.get_index()] = guess
-        self._hints[player.get_index()] = self.generate_hint(code, guess)
+        self._hints[player.get_index()] = self._generate_hint(code, guess)
         return "xxxx" == self._hints[player.get_index()]
 
 
