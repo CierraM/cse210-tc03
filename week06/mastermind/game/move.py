@@ -23,4 +23,3 @@ class Move:
             self (Move): an instance of Move.
         """
         return self.guess
-    
