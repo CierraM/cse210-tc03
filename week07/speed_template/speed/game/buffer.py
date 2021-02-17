@@ -4,20 +4,22 @@ from game.point import Point
 
 # CHANGE THIS ONE
 
-class Snake:
-    """A limbless reptile. The responsibility of Snake is keep track of its segments. It contains methods for moving and growing among others.
+class Buffer(Actor):
+    """The spot where you write words
+        A subclass of actor
+        Keeps track of words the player is typing in
 
     Stereotype:
-        Structurer, Information Holder
+        Information holder
 
     Attributes:
-        _body (List): The snake's body (a list of Actor instances)
+        
     """
     def __init__(self):
         """The class constructor.
         
         Args:
-            self (Snake): An instance of snake.
+            self (buffer): An instance of buffer.
         """
         super().__init__()
         self._segments = []
