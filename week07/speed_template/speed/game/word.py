@@ -3,7 +3,7 @@ from game import constants
 from game.actor import Actor
 from game.point import Point
 
-# TODO: Define the Food class here
+# CHANGE THIS ONE
 
 class Food(Actor):
     """Delicious red apples for an herbivorous snake to eat

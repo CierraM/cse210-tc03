@@ -4,6 +4,8 @@ from game.food import Food
 from game.score import Score
 from game.snake import Snake
 
+
+# CHANGE THIS ONE
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
