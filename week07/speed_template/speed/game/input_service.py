@@ -35,8 +35,9 @@ class InputService:
         if not event is None:
             if event == 27: # 27 = esc key
                 sys.exit()
-            elif event == 10: # 10 = linefeed 
+ 
+            elif event == 13: # 10 = linefeed, 13 = charecter turn aka enter
                 result = "*" # special return value to clear buffer
-            elif event >= 97 and event <= 122: #lower case letter range  
+            elif event >= 97 and event <= 122: #lower case letter range
                 result = chr(event)
         return result
