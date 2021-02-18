@@ -6,7 +6,6 @@ from game.score import Score
 from game.buffer import Buffer
 
 
-# CHANGE THIS ONE
 class Director:
     """A code template for a person who directs the game. The responsibility of 
     this class of objects is to control the sequence of play.
@@ -22,28 +21,7 @@ class Director:
         score (Score): The current score.
         buffer : The holding spot
     """
-    def init_word_list(self):
-        #THis is calling the word object so it can look up the word and store it
-        #Also sets it location
-        for n in range(self.max_word):
-            #pick a random y position, x is 0.
-            self.word_list.append(Word(0,self.random_row_number()))
-
-
-    def random_row_number(self):
-        # rows on the screen 
-        # 1 score
-        # 2-19 words randomly placed
-        # 20 buffer
-        y = random.randint(2, 19)
-        while self.rows[y] == True:
-            y = random.randint(2, 19)
-        self.rows[y] = True        
-        return y
-
-    def init_row_list(self):
-        for n in range(self.max_rows):
-            self.rows[n] = False
+    
 
     def __init__(self, input_service, output_service):
         """The class constructor.
@@ -51,9 +29,11 @@ class Director:
         Args:
             self (Director): an instance of Director.
         """
+        self.word = Word()
         self.max_word = 5
         self.max_rows = 20
         self.word_list = []
+        self.word_list_position = []
         self.rows = []
         self.init_row_list()
         self.init_word_list()
@@ -75,10 +55,36 @@ class Director:
             self._do_outputs()
             sleep(constants.FRAME_LENGTH)
 
-    def move_words(self):
-        for word in self.word_list:
-            #Move needs to change the location
-            word.move()
+
+    def init_word_list(self):
+        #THis is calling the word object so it can look up the word and store it
+        #Also sets it location
+        for n in range(self.max_word):
+            #pick a random y position, x is 0.
+            self.word_list.append(self.word.send_word())
+            self.word_list_position.append(self.random_row_number())
+
+
+    def random_row_number(self):
+        # rows on the screen 
+        # 1 score
+        # 2-19 words randomly placed
+        # 20 buffer
+        y = random.randint(2, 19)
+        while self.rows[y] == True:
+            y = random.randint(2, 19)
+        self.rows[y] = True        
+        return y
+
+    def init_row_list(self):
+        for n in range(self.max_rows):
+            self.rows[n] = False
+
+
+    # def move_words(self):
+    #     for word in self.word_list:
+    #         #Move needs to change the location
+    #         word.move()
 
 
     def _get_inputs(self):
@@ -95,7 +101,7 @@ class Director:
         # 2. otherwise add letter to end of buffer.
         self._buffer.add_letter(new_letter) 
 
-        self.move_words()
+        # self.move_words()
           
     def _do_updates(self):
         """Updates the important game information for each round of play. In 
@@ -107,7 +113,8 @@ class Director:
         for x in range(self.max_word):
             # buffer.is_word returns true if word is in the buffer.
             if self._buffer.is_word(self.word_list[x]):
-                self.word_list[x] = Word(0,self.random_row_number())
+                self.word_list[x] = self.word.send_word()
+                self.word_list_position[x] = self.random_row_number()
                 self._score.add_points(3)
         
     def _do_outputs(self):
