@@ -7,113 +7,48 @@ from game.point import Point
 class Buffer(Actor):
     """The spot where you write words
         A subclass of actor
-        Keeps track of words the player is typing in
+        Keeps track of letters the player is typing in
+        Add letter
 
     Stereotype:
         Information holder
 
     Attributes:
-        
+        _letters: keeps track of the letters the player inputted
     """
     def __init__(self):
-        """The class constructor.
+        """
+            The class constructor.
         
         Args:
             self (buffer): An instance of buffer.
         """
         super().__init__()
-        self._segments = []
-        self._prepare_body()
-    
-    def get_all(self):
-        """Gets all the snake's segments.
+        self._letters = []
         
-        Args:
-            self (Snake): An instance of snake.
-
-        Returns:
-            list: The snake's segments.
+    def add_letter(self, letter):
         """
-        return self._segments
-
-    def get_body(self):
-        """Gets the snake's body.
-        
-        Args:
-            self (Snake): An instance of snake.
-
-        Returns:
-            list: The snake's body.
-        """
-        return self._segments[1:]
-
-    def get_head(self):
-        """Gets the snake's head.
-        
-        Args:
-            self (Snake): An instance of snake.
-
-        Returns:
-            Actor: The snake's head.
-        """
-        return self._segments[0]
-
-    def grow_tail(self):
-        """Grows the snake's tail by one segment.
-        
-        Args:
-            self (Snake): An instance of snake.
-        """
-        tail = self._segments[-1]
-        offset = tail.get_velocity().reverse()
-        text = "#"
-        position = tail.get_position().add(offset)
-        velocity = tail.get_velocity()
-        self._add_segment(text, position, velocity)
-    
-    def move_head(self, direction):
-        """Moves the snake in the given direction.
+            If the letter is a *, clear the buffer. Otherwise, it adds the letter onto the buffer
 
         Args:
-            self (Snake): An instance of snake.
-            direction (Point): The direction to move.
+            self (buffer): An instance of buffer.
+            letter (str): the letters the user inputs
         """
-        count = len(self._segments) - 1
-        for n in range(count, -1, -1):
-            segment = self._segments[n]
-            if n > 0:
-                leader = self._segments[n - 1]
-                velocity = leader.get_velocity()
-                segment.set_velocity(velocity)
-            else:
-                segment.set_velocity(direction)
-            segment.move_next()
+        if letter == '*':
+            self._letters.clear()
+        else:
+            self._letters.append(letter)
 
-    def _add_segment(self, text, position, velocity):
-        """Adds a new segment to the snake using the given text, position and velocity.
+    def is_word(self, word):
+        """
+            Makes the list of letters into a string, and compares them to the words on the screen.
 
         Args:
-            self (Snake): An instance of snake.
-            text (string): The segment's text.
-            position (Point): The segment's position.
-            velocity (Point): The segment's velocity.
+            self (buffer): An instance of buffer.
+            word (str): the word on the screen
         """
-        segment = Actor()
-        segment.set_text(text)
-        segment.set_position(position)
-        segment.set_velocity(velocity)
-        self._segments.append(segment)
-
-    def _prepare_body(self):
-        """Prepares the snake body by adding segments.
-        
-        Args:
-            self (Snake): an instance of Snake.
-        """
-        x = int(constants.MAX_X / 2)
-        y = int(constants.MAX_Y / 2)
-        for n in range(constants.SNAKE_LENGTH):
-            text = "8" if n == 0 else "#"
-            position = Point(x - n, y)
-            velocity = Point(1, 0)
-            self._add_segment(text, position, velocity)
+        word_to_string = ''.join(self._letters)
+        if word_to_string == word:
+            return True
+        else:
+            return False
