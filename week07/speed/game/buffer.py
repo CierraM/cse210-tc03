@@ -51,7 +51,7 @@ class Buffer(Actor):
             word (str): the word on the screen
         """
         word_to_string = ''.join(self._letters)
-        if word_to_string == word:
+        if word_to_string.find(word) > -1:
             return True
         else:
             return False
