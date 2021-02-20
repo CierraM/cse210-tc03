@@ -25,7 +25,8 @@ class Buffer(Actor):
         """
         super().__init__()
         self._letters = []
-        
+        self.set_position(Point(7, constants.MAX_Y))
+        self.set_text("Buffer:")
     def add_letter(self, letter):
         """
             If the letter is a *, clear the buffer. Otherwise, it adds the letter onto the buffer
@@ -38,6 +39,8 @@ class Buffer(Actor):
             self._letters.clear()
         else:
             self._letters.append(letter)
+        
+        self.set_text("".join(self._letters))
 
     def is_word(self, word):
         """
