@@ -29,14 +29,12 @@ class Director:
         
         Args:
             self (Director): an instance of Director.
+            _word-list: a list of word objects
+            _input_service: an instance of InputService
+            _output_service: an instance of OutputService
         """
-        # self._word = Word()
-        # self.max_word = 5
-        # self.max_rows = 20
+
         self._word_list = [] # A list of word objects
-        # self._word_list_position = []
-        # self._rows = []
-        # self._init_row_list()
         self._init_word_list()
         self._input_service = input_service
         self._keep_playing = True
@@ -65,30 +63,6 @@ class Director:
         for n in range(constants.MAX_WORDS):
             #pick a random y position, x is 0.
             self._word_list.append(Word())
-            
-
-
-    # def _random_row_number(self):
-    #     # rows on the screen 
-    #     # 1 score
-    #     # 2-19 words randomly placed
-    #     # 20 buffer
-    #     y = random.randint(2, 19)
-    #     while self.rows[y] == True:
-    #         y = random.randint(2, 19)
-    #     self.rows[y] = True        
-    #     return y
-
-    # def _init_row_list(self):
-    #     for n in range(self.max_rows):
-    #         self.rows[n] = False
-
-
-    # def move_words(self):
-    #     for word in self.word_list:
-    #         #Move needs to change the location
-    #         word.move()
-
 
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -124,11 +98,8 @@ class Director:
             if self._buffer.is_word(self._word_list[x].get_text()):
                 self._score.add_points(self._word_list[x].get_points())
                 self._word_list[x] = Word()
-                # self._word_list_position[x] = self.random_row_number()
-            # Position and velocity are both point objects. We need to use the velocity to change the position
-            position = self._word_list[x].get_position()
-            velocity = self._word_list[x].get_velocity()
-            self._word_list[x].set_position(position.add(velocity))
+            # Use move_next inherited from Actor to move the word
+            self._word_list[x].move_next()
 
         
     def _do_outputs(self):
