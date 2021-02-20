@@ -109,7 +109,7 @@ class Director:
         for x in range(constants.MAX_WORDS):
             if self._word_list[x].get_position().get_x() > (constants.MAX_X - 10):
                 self._word_list[x] = Word()
-                self._score.add_points(-3)
+                self._score.add_points(0)
 
           
     def _do_updates(self):
