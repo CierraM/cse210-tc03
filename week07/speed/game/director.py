@@ -58,8 +58,10 @@ class Director:
 
 
     def _init_word_list(self):
-        #THis is calling the word object so it can look up the word and store it
-        
+        """This is calling the word object so it can look up the word and store it
+        Args:
+            self (Director): An instance of Director.
+        """
         for n in range(constants.MAX_WORDS):
             #pick a random y position, x is 0.
             self._word_list.append(Word())
@@ -83,7 +85,7 @@ class Director:
         for x in range(constants.MAX_WORDS):
             if self._word_list[x].get_position().get_x() > (constants.MAX_X - 10):
                 self._word_list[x] = Word()
-                self._score.add_points(0)
+                self._score.add_points(-3)
 
           
     def _do_updates(self):
