@@ -22,7 +22,7 @@ class InputService:
         self._screen = screen
         
     def get_letter(self):
-        """Gets the letter that was typed. If the enter key was pressed returns an asterisk.
+        """Gets the letter that was typed. If the enter key was pressed returns an asterisk. Exits game is esc is hit
 
         Args:
             self (InputService): An instance of InputService.

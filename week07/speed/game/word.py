@@ -16,6 +16,12 @@ class Word(Actor):
         
     """
     def __init__(self):
+        """The class constructor. Invokes the superclass constructor, initiallizes the library with all the words, 
+        sets the position, sets velocity, and sets point value equal to length of word.
+        
+        Args:
+            self (Word): an instance of Word.
+        """
         super().__init__()
         self.set_text(constants.LIBRARY[random.randint(0, len(constants.LIBRARY) - 1)])
         self.set_position(Point(0, (random.randint(2, constants.MAX_Y - 2))))
@@ -25,6 +31,11 @@ class Word(Actor):
         self._points = len(self._text)
 
     def get_points(self):
+        """Returns the points earned from the word being typed.
+        
+        Args:
+            self (Word): an instance of Word.
+        """
         return self._points
 
 
