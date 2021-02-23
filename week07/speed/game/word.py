@@ -4,35 +4,39 @@ from game.actor import Actor
 from game.point import Point
 
 class Word(Actor):
-    """Delicious red apples for an herbivorous snake to eat
-        In charge of keeping track of appearance and position of food.
+    """A subclass of actor. In charge of keeping track of a word. Also remembers position and velocity of the word.
 
     Stereotype:
         Information Holder
 
     Attributes:
-        _points: integer, the number of points a fruit is worth
+        text: the value of the word
+        position: the initial position of the word
+        velocity: how fast it is moving
+        
     """
     def __init__(self):
+        """The class constructor. Invokes the superclass constructor, initiallizes the library with all the words, 
+        sets the position, sets velocity, and sets point value equal to length of word.
+        
+        Args:
+            self (Word): an instance of Word.
+        """
         super().__init__()
-        # self._points = 0
-        # self.set_text('@')
-        # self.set_position(Point(0, 0))
-        self.set_velocity((0.5, 0))
-        # self.reset()
+        self.set_text(constants.LIBRARY[random.randint(0, len(constants.LIBRARY) - 1)])
+        self.set_position(Point(0, (random.randint(2, constants.MAX_Y - 2))))
+        self.set_velocity(Point(1, 0))
 
-        self.word_library = constants.LIBRARY
+        # Let's make the points be worth the length of the word.
+        self._points = len(self._text)
 
-    def send_word(self):
+    def get_points(self):
+        """Returns the points earned from the word being typed.
+        
+        Args:
+            self (Word): an instance of Word.
         """
-        This class will return word_library when called
+        return self._points
 
-            self.word_library: a list of all the words from constant "library"
-        """
-        return self.word_library[random.randint(0, len(self.word_library) - 1)]
 
-    # def reset(self):
-    #     """
-    #     Resets the position of the food
-    #     """
-    #     self.set_position(Point((random.randint(1, 60)), (random.randint(1,20))))
+

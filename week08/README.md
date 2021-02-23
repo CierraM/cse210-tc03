@@ -1,8 +1,7 @@
-# Speed
-Think you can type faster than your peers? Start a <i>Speed</i> 
-tournament and you'll know! The rules are simple. Type the words you 
-see as they move across the screen. Press enter to clear the buffer at 
-any time. Type a word correctly and your score goes up.
+# Batter
+What's your batting average? Find out with this terminal version of the arcade 
+classic. The goal is simple. Just bat the ball at the blricks until there are 
+none left. If you miss the ball the game is over.
 
 ## Getting Started
 ---
@@ -15,7 +14,7 @@ python3 -m pip install asciimatics
 After you've installed the required libraries, open a terminal and browse to the 
 project's root folder. Start the program by running the following command.
 ```
-python3 speed 
+python3 batter 
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE 
 and open the project folder. Select the main module inside the hunter folder and 
@@ -26,7 +25,7 @@ click the "run" icon.
 The project files and folders are organized as follows:
 ```
 root                    (project root folder)
-+-- speed               (source code for game)
++-- batter              (source code for game)
   +-- game              (specific game classes)
   +-- __init__.py       (python package file)
   +-- __main__.py       (entry point for program)
@@ -40,7 +39,4 @@ root                    (project root folder)
 
 ## Authors
 ---
-* Benjamin Fernelius - fer19038@byui.edu 
-Cierra Morris - how17018@byui.edu 
-Jacob Elzinga - elz20002@byui.edu 
-Jane Orr - orr19002@byui.edu
+* # TODO: Add your names and emails here
