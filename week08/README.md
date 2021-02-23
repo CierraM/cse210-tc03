@@ -40,3 +40,7 @@ root                    (project root folder)
 ## Authors
 ---
 * # TODO: Add your names and emails here
+Benjamin Fernelius - fer19038@byui.edu 
+Cierra Morris - how17018@byui.edu 
+Jacob Elzinga - elz20002@byui.edu 
+Jane Orr - orr19002@byui.edu
