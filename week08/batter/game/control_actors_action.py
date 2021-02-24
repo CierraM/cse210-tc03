@@ -1,9 +1,11 @@
 from game import constants
 from game.action import Action
+from game.point import Point
 
 class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
     class of objects is translate user input into some kind of intent.
+    Move paddle left and righ in this case.
     
     Stereotype:
         Controller
@@ -27,5 +29,8 @@ class ControlActorsAction(Action):
             cast (dict): The game actors {key: tag, value: list}.
         """
         direction = self._input_service.get_direction()
-        robot = cast["robot"][0] # there's only one in the cast
-        robot.set_velocity(direction)        
+        paddle = cast["paddle"][0] # there's only one in the cast
+        if direction.get_x() == 0:
+            return
+        else:
+            paddle.set_velocity(direction)        
