@@ -25,6 +25,15 @@ def main(screen):
     paddle.set_velocity(Point(1, 0))
     cast["paddle"] = [paddle]
 
+    x = int(1)
+    y = int(constants.MAX_Y / 2)
+    position = Point(x, y)
+    jester = Actor()
+    jester.set_text("jester")
+    jester.set_position(position)
+    jester.set_velocity(Point(0, 0))
+    cast["jester"] = [jester]
+
     cast["brick"] = []
     for x in range(5, 75):
         for y in range(2, 6):
@@ -38,11 +47,11 @@ def main(screen):
     y = int(constants.MAX_Y / 2)
     position = Point(x, y)
     velocity = Point(1, -1)
-    # ball = Actor()
-    # ball.set_text("@")
-    # ball.set_position(position)
-    # ball.set_velocity(velocity)
-    # cast["ball"] = [ball]
+    ball = Actor()
+    ball.set_text("@")
+    ball.set_position(position)
+    ball.set_velocity(velocity)
+    cast["ball"] = [ball]
     
     # create the script {key: tag, value: list}
     script = {}
