@@ -20,7 +20,7 @@ def main(screen):
     y = int(constants.MAX_Y - 1)
     position = Point(x, y)
     paddle = Actor()
-    paddle.set_text("===========")
+    paddle.set_text("▀▀▀▀▀▀▀▀▀▀▀▀▀▀")
     paddle.set_position(position)
     paddle.set_velocity(Point(1, 0))
     cast["paddle"] = [paddle]
@@ -39,7 +39,7 @@ def main(screen):
         for y in range(2, 6):
             position = Point(x, y)
             brick = Actor()
-            brick.set_text("*")
+            brick.set_text("◘")
             brick.set_position(position)
             cast["brick"].append(brick)
 
@@ -48,7 +48,7 @@ def main(screen):
     position = Point(x, y)
     velocity = Point(1, -1)
     ball = Actor()
-    ball.set_text("@")
+    ball.set_text("○")
     ball.set_position(position)
     ball.set_velocity(velocity)
     cast["ball"] = [ball]
