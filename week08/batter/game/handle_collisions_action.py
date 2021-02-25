@@ -33,7 +33,6 @@ class HandleCollisionsAction(Action):
                 ball.set_velocity(ball.get_velocity().reverse_y())
 
 
-
     def execute(self, cast):
         """Executes the action using the given actors.
 
