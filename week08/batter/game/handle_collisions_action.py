@@ -18,7 +18,6 @@ class HandleCollisionsAction(Action):
 
     def wall_bounce(self, ball):
         point1 = ball.get_position()
-        # jester.set_text(f"y = {str(point1.get_y())}")
         if point1.get_y() == 1:
             ball.set_velocity(ball.get_velocity().reverse_y())
         if point1.get_x() == 1 or point1.get_x() == constants.MAX_X - 1:
@@ -53,7 +52,7 @@ class HandleCollisionsAction(Action):
                 vel_y = vel_y * -1
                 ball.set_velocity(Point(vel_x, vel_y))
 
-    def brick_bounce(self, ball, bricks):
+    def brick_bounce(self, ball, bricks, jester):
         ball_velocity = ball.get_velocity()
         vel_x = ball_velocity.get_x()
         vel_y = ball_velocity.get_y()
@@ -61,6 +60,8 @@ class HandleCollisionsAction(Action):
             if ball.get_position().equals(bricks[i].get_position()):
                 self.count += 1
                 bricks.pop(i)
+                jester.set_score(jester.get_score() + 10)
+                jester.set_text(f'Score: {jester.get_score()}')
                 if vel_x == -2:
                     vel_x = -1
                     vel_y = vel_y * -1
@@ -94,10 +95,10 @@ class HandleCollisionsAction(Action):
         ball = cast["ball"][0] # there's only one
         paddle = cast["paddle"][0]
         bricks = cast["brick"]
-        # jester = cast["jester"][0]
+        jester = cast["jester"][0]
         self.paddle_bounce(paddle, ball)
         self.wall_bounce(ball)
-        self.brick_bounce(ball, bricks)
+        self.brick_bounce(ball, bricks, jester)
 
         # robot = cast["robot"][0] # there's only one
         # artifacts = cast["artifact"]

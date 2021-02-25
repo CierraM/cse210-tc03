@@ -21,6 +21,7 @@ class Actor:
         self._text = ""
         self._position = Point(0, 0)
         self._velocity = Point(0, 0)
+        self._score = 0
 
     def get_description(self):
         """Gets the artifact's description.
@@ -85,3 +86,9 @@ class Actor:
             position (Point): The given velocity.
         """
         self._velocity = velocity
+
+    def get_score(self):
+        return self._score
+
+    def set_score(self, score):
+        self._score = score

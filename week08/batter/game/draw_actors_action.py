@@ -19,7 +19,6 @@ class DrawActorsAction(Action):
         """
         self._output.clear_screen()
         for value in cast.values():
-            
             self._output.draw_actors(value)
         self._output.flush_buffer()
 

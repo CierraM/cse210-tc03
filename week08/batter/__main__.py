@@ -20,17 +20,16 @@ def main(screen):
     y = int(constants.MAX_Y - 1)
     position = Point(x, y)
     paddle = Actor()
-    paddle.set_text("▀▀▀▀▀▀▀▀▀▀▀▀▀▀")
+    paddle.set_text("▀▀▀▀▀▀▀▀▀▀▀▀▀")
     paddle.set_position(position)
     paddle.set_velocity(Point(1, 0))
     cast["paddle"] = [paddle]
 
-    x = int(1)
-    y = int(constants.MAX_Y / 2)
-    position = Point(x, y)
+
+
     jester = Actor()
-    jester.set_text("jester")
-    jester.set_position(position)
+    jester.set_text(f'Score: 0')
+    jester.set_position(Point(0, 0))
     jester.set_velocity(Point(0, 0))
     cast["jester"] = [jester]
 
