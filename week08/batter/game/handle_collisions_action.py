@@ -2,6 +2,7 @@ import random
 import sys
 from game import constants
 from game.action import Action
+from game.point import Point
 
 class HandleCollisionsAction(Action):
     """A code template for handling collisions. The responsibility of this class of objects is to update the game state when actors collide.
@@ -29,19 +30,47 @@ class HandleCollisionsAction(Action):
         ball_point = ball.get_position()
         paddle_left = paddle.get_position()
         paddle_right = len(paddle.get_text())
+        ball_velocity = ball.get_velocity()
+        vel_x = ball_velocity.get_x()
+        vel_y = ball_velocity.get_y()
         if ball_point.get_y() == paddle_left.get_y() - 1:
             x = ball_point.get_x()
             y = ball_point.get_y()
             paddle_x = paddle_left.get_x()
-            if x >= paddle_x and x <= paddle_x + paddle_right:
-                ball.set_velocity(ball.get_velocity().reverse_y())
+            if x >= paddle_x + 4 and x <= paddle_x + paddle_right - 4:
+                if vel_x == -2:
+                    vel_x = -1
+                elif vel_x == 2:
+                    vel_x = 1
+                vel_y = vel_y * -1
+                ball.set_velocity(Point(vel_x, vel_y))
+            if x >= paddle_x and x <= paddle_x + paddle_right - 10:
+                vel_x = vel_x * 2
+                vel_y = vel_y * -1
+                ball.set_velocity(Point(vel_x, vel_y))
+            if x >= paddle_x + 10 and x <= paddle_x + paddle_right:
+                vel_x = vel_x * 2
+                vel_y = vel_y * -1
+                ball.set_velocity(Point(vel_x, vel_y))
 
     def brick_bounce(self, ball, bricks):
+        ball_velocity = ball.get_velocity()
+        vel_x = ball_velocity.get_x()
+        vel_y = ball_velocity.get_y()
         for i in range(len(bricks)):
             if ball.get_position().equals(bricks[i].get_position()):
                 self.count += 1
                 bricks.pop(i)
-                ball.set_velocity(ball.get_velocity().reverse_y())
+                if vel_x == -2:
+                    vel_x = -1
+                    vel_y = vel_y * -1
+                    ball.set_velocity(Point(vel_x, vel_y))
+                elif vel_x == 2:
+                    vel_x = 1
+                    vel_y = vel_y * -1
+                    ball.set_velocity(Point(vel_x, vel_y))
+                else:
+                    ball.set_velocity(ball.get_velocity().reverse_y())
                 break
             # elif ball.get_position().equals(bricks[i].get_position()) and bricks[i] == " ":
             #     ball.set_velocity(ball.get_velocity().reverse_y())
