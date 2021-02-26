@@ -102,20 +102,6 @@ class HandleCollisionsAction(Action):
                 else:
                     ball.set_velocity(ball.get_velocity().reverse_y())
                 break
-<<<<<<< HEAD
-=======
-            # elif ball.get_position().equals(bricks[i].get_position()) and bricks[i] == " ":
-            #     ball.set_velocity(ball.get_velocity().reverse_y())
-
-        # point1 = ball.get_position()
-        # if point1.get_y() == 1:
-        #     ball.set_velocity(ball.get_velocity().reverse_y())
-        # if point1.get_x() == 1 or point1.get_x() == constants.MAX_X - 1:
-        #     ball.set_velocity(ball.get_velocity().reverse_x())  
-        # if point1.get_y() == constants.MAX_Y - 1:
-        #     sys.exit(0)
-
->>>>>>> 4c00d143b54a6514b7464592450b05c449f00160
 
     def execute(self, cast):
         """Executes the action using the given actors.
