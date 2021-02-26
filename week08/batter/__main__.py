@@ -12,12 +12,12 @@ from game.output_service import OutputService
 from asciimatics.screen import Screen 
 
 def main(screen):
-
+    """ Defines and adds all major functions to a dictionary called "cast." Creates script to be sent to director for game startup."""
     # create the cast {key: tag, value: list}
     cast = {}
 
     x = int(constants.MAX_X / 2)
-    y = int(constants.MAX_Y - 1)
+    y = int(constants.MAX_Y - 2)
     position = Point(x, y)
     paddle = Actor()
     paddle.set_text("▀▀▀▀▀▀▀▀▀▀▀▀▀▀")
@@ -26,13 +26,13 @@ def main(screen):
     cast["paddle"] = [paddle]
 
     x = int(1)
-    y = int(constants.MAX_Y / 2)
+    y = int(0)
     position = Point(x, y)
-    jester = Actor()
-    jester.set_text("jester")
-    jester.set_position(position)
-    jester.set_velocity(Point(0, 0))
-    cast["jester"] = [jester]
+    score = Actor()
+    score.set_text("Score: 0")
+    score.set_position(position)
+    score.set_velocity(Point(0, 0))
+    cast["score"] = [score]
 
     cast["brick"] = []
     for x in range(5, 75):
